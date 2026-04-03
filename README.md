@@ -17,5 +17,6 @@ CRIU fails to checkpoint the process when POSIX message queues are involved.
 See dump.log
 
 ## Insight
-POSIX message queues cannot be inspected without consuming messages (mq_receive),
-which makes checkpointing unsafe without kernel support.
+CRIU currently cannot checkpoint processes using POSIX message queues due to:
+Inability to handle mqueue file descriptors
+Lack of a mechanism to inspect queue contents without modifying them
